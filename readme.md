@@ -6,7 +6,9 @@ The idea of JSONdb came up when I wanted to create a site with dynamic content o
 ## How to use
 
 To use, just include the JSONdb.class.php in your project and make sure you have a safe place to store your JSON files. For security reasons don't put your JSON files anywhere where there is outside access(for obvious reasons). Also make sure that PHP has read and write permissions to the folder(s) in which you store your files.
-Sample code
+
+### Sample code
+
     <?php
         // This is the standard constructor, there are som other options that will be explained later
         $mydb = new JSONdb('../dbfiles/', 'mydb.json');
