@@ -35,7 +35,8 @@ To use, just include the JSONdb.class.php in your project and make sure you have
 ### Constructor
 
 ```PHP
-    public function __construct($db_folder, $db_file, $auto_commit = true, $create_if_not_exists = false) ```
+    public function __construct($db_folder, $db_file, $auto_commit = true, $create_if_not_exists = false)
+```
 
 The ``` $db_folder``` is the folder in which you want to save your files.
 
@@ -48,7 +49,8 @@ If you set ``` $create_if_not_exists``` to true, JSONdb will try to create the d
 ### Save
 
 ```PHP 
-    public function save($data) ```
+    public function save($data)
+```
 
 This method will save ``` $data``` to the buffer, and if ``` $auto_commit``` was set to true, it will write the changes to disk.
 
@@ -57,14 +59,16 @@ I prefer to add the data in the form of ``` stdClass()``` but an assoc array or 
 ### Edit methods
 
 ```PHP 
-    public function edit_where($search, $key, $replace) ```
+    public function edit_where($search, $key, $replace)
+```
 
 This method will search for the key ```$key``` with the value ```$search ```and replace the value with ``` $replace```.
 
 ***
 
 ```PHP 
-    public function edit_what_where($key, $search, $rkey, $replace)```
+    public function edit_what_where($key, $search, $rkey, $replace)
+```
 
 This method will do as the above, but with differens that it allows you to change/create another key ``` $rkey```.
 
@@ -72,14 +76,16 @@ This method will do as the above, but with differens that it allows you to chang
 ***
 
 ```PHP 
-    public function edit_row($row, $data)```
+    public function edit_row($row, $data)
+```
 
 This method allows you to write to row number ``` $row```.
 
 ### Fetch methods
 
 ```PHP 
-    public function get_all()```
+    public function get_all()
+```
 
 This function will return the data buffer as it is represented internaly.
 
@@ -87,7 +93,8 @@ This function will return the data buffer as it is represented internaly.
 ***
 
 ```PHP
-    public function get_slice($offset, $count)```
+    public function get_slice($offset, $count)
+```
 
 This method will return a slice of the buffer. It will begin at "row" ``` $offset``` and continue ``` $count``` number of rows. It throws an exception if you try to get a row that does not exist
 
@@ -95,7 +102,8 @@ This method will return a slice of the buffer. It will begin at "row" ``` $offse
 ***
 
 ```PHP 
-    public function get_row($row)```
+    public function get_row($row)
+```
 
 This method returns a specific row. Internaly every row is stored as an array like so ``` $this->buffer[]``` and this method acts as a wrapper to read diffrent indicies.
 
@@ -103,20 +111,23 @@ This method returns a specific row. Internaly every row is stored as an array li
 ***
 
 ```PHP 
-    public function get_row_where($key, $value)```
+    public function get_row_where($key, $value)
+```
 
 This method returns a row with the key ``` $key``` and value ``` $value```. Simple as that.
 
 ### Search
 
 ```PHP 
-    public function public function search($kv_array) ```
+    public function public function search($kv_array)
+```
 
 This method takes an assoc array and serches for the key with the corresponding value.
 
 ### Commit changes
 
 ```PHP 
-    public function commit()```
+    public function commit()
+```
 
 Use this method to commit changes if you constructed the database without auto commit.
