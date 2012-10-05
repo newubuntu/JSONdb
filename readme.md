@@ -29,3 +29,83 @@ To use, just include the JSONdb.class.php in your project and make sure you have
     }
 ?>
 ```
+
+## Methods
+
+### Constructor
+
+```PHP public function __construct($db_folder, $db_file, $auto_commit = true, $create_if_not_exists = false) ```
+
+The ```PHP $db_folder``` is the folder in which you want to save your files.
+
+The ```PHP $db_file``` is the file in which you want to save your data.
+
+If you set ```PHP $auto_commit``` to true, all calls to functions that edit the data will be directly written to file.
+
+If you set ```PHP $create_if_not_exists``` to true, JSONdb will try to create the database file if it does not allready exist.
+
+### Save
+
+```PHP public function save($data) ```
+
+This method will save ```PHP $data``` to the buffer, and if ```PHP $auto_commit``` was set to true, it will write the changes to disk.
+
+I prefer to add the data in the form of ```PHP stdClass()``` but an assoc array or ordinary array should work as well. Note that when you load the data back it will be a ```PHP stdClass()``` and not an array. There will probably be an option to get the data as an array in a future version.
+
+### Edit methods
+
+```PHP public function edit_where($search, $key, $replace) ```
+
+This method will search for the key ```PHP $key``` with the value ```PHP $search ```and replace the value with ```PHP $replace```.
+
+***
+
+```PHP public function edit_what_where($key, $search, $rkey, $replace)```
+
+This method will do as the above, but with differens that it allows you to change/create another key ```PHP $rkey```.
+
+
+***
+
+```PHP public function edit_row($row, $data)```
+
+This method allows you to write to row number ```PHP $row```.
+
+### Fetch methods
+
+```PHP public function get_all()```
+
+This function will return the data buffer as it is represented internaly.
+
+
+***
+
+```PHP public function get_slice($offset, $count)```
+
+This method will return a slice of the buffer. It will begin at "row" ```PHP $offset``` and continue ```PHP $count``` number of rows. It throws an exception if you try to get a row that does not exist
+
+
+***
+
+```PHP public function get_row($row)```
+
+This method returns a specific row. Internaly every row is stored as an array like so ```PHP $this->buffer[]``` and this method acts as a wrapper to read diffrent indicies.
+
+
+***
+
+```PHP public function get_row_where($key, $value)```
+
+This method returns a row with the key ```PHP $key``` and value ```$value```. Simple as that.
+
+### Search
+
+```PHP public function public function search($kv_array) ```
+
+This method takes an assoc array and serches for the key with the corresponding value.
+
+### Commit changes
+
+```PHP public function commit()```
+
+Use this method to commit changes if you constructed the database without auto commit.
