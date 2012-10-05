@@ -139,7 +139,7 @@ class JSONdb {
 	}
 	
 	/* Returns count number of rows beginning from the offset */
-	public function get_slice($offset, $count, $reverse = false) {
+	public function get_slice($offset, $count) {
 		if($offset+$count < $this->get_count()) {
 			$tmp = array();
 			for($i = $offset; $i <= $offset+$count; $i++) {
