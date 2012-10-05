@@ -9,21 +9,23 @@ To use, just include the JSONdb.class.php in your project and make sure you have
 
 ### Sample code
 
-    <?php
-        // This is the standard constructor, there are som other options that will be explained later
-        $mydb = new JSONdb('../dbfiles/', 'mydb.json');
-        
-        // The buffer is an array of stdClasses
-        $row = new stdClass();
-        $row->data = "Some data";
-        $row->aNumber = 42;
-        
-        // Writes the change to the buffer, and in this case it auto commits.
-        $mydb->save($row);
-        
-        
-        $result = $mydb->getAll();
-        foreach($result as $entry) {
-            echo "My number: ".$entry->aNumber;
-        }
-    ?>
+```PHP
+<?php
+    // This is the standard constructor, there are som other options that will be explained later
+    $mydb = new JSONdb('../dbfiles/', 'mydb.json');
+    
+    // The buffer is an array of stdClasses
+    $row = new stdClass();
+    $row->data = "Some data";
+    $row->aNumber = 42;
+    
+    // Writes the change to the buffer, and in this case it auto commits.
+    $mydb->save($row);
+    
+    
+    $result = $mydb->getAll();
+    foreach($result as $entry) {
+        echo "My number: ".$entry->aNumber;
+    }
+?>
+```
