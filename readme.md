@@ -22,7 +22,7 @@ To use, just include the JSONdb.class.php in your project and make sure you have
         $mydb->save($row);
         
         
-        $result = $mydb->getall();
+        $result = $mydb->getAll();
         foreach($result as $entry) {
             echo "My number: ".$entry->aNumber;
         }
